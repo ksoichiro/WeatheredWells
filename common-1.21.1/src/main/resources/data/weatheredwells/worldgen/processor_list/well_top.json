@@ -2,9 +2,6 @@
   "processors": [
     {
       "processor_type": "weatheredwells:waterlog_removal"
-    },
-    {
-      "processor_type": "weatheredwells:chest_loot"
     }
   ]
 }

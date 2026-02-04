@@ -19,6 +19,7 @@ package com.weatheredwells.registry;
 
 import com.weatheredwells.WeatheredWells;
 import com.weatheredwells.worldgen.ChestLootProcessor;
+import com.weatheredwells.worldgen.WaterlogRemovalProcessor;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
@@ -32,13 +33,18 @@ public class ModProcessors {
             PROCESSOR_TYPES.register("chest_loot",
                     () -> () -> ChestLootProcessor.CODEC);
 
+    public static final RegistrySupplier<StructureProcessorType<WaterlogRemovalProcessor>> WATERLOG_REMOVAL =
+            PROCESSOR_TYPES.register("waterlog_removal",
+                    () -> () -> WaterlogRemovalProcessor.CODEC);
+
     public static void register() {
         PROCESSOR_TYPES.register();
         WeatheredWells.LOGGER.debug("Registered ModProcessors");
     }
 
     public static void init() {
-        // Called after registration to wire the TYPE field
+        // Called after registration to wire the TYPE fields
         ChestLootProcessor.TYPE = CHEST_LOOT.get();
+        WaterlogRemovalProcessor.TYPE = WATERLOG_REMOVAL.get();
     }
 }
