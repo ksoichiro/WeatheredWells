@@ -3,7 +3,9 @@
   "minVersion": "0.8",
   "package": "com.weatheredwells.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "StructureStartMixin"
+  ],
   "refmap": "common-common-refmap.json",
   "injectors": {
     "defaultRequire": 1
