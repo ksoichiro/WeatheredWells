@@ -15,26 +15,17 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Weathered Wells. If not, see <https://www.gnu.org/licenses/>.
  */
-package com.weatheredwells;
+package com.weatheredwells.effects;
 
-import com.weatheredwells.events.WeatheredWellsEvents;
-import com.weatheredwells.registry.ModCreativeTabs;
-import com.weatheredwells.registry.ModEffects;
-import com.weatheredwells.registry.ModItems;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 
-public class WeatheredWells {
-    public static final String MOD_ID = "weatheredwells";
-    public static final Logger LOGGER = LoggerFactory.getLogger(WeatheredWells.class);
-
-    public static void init() {
-        ModItems.register();
-        ModEffects.register();
-        ModCreativeTabs.register();
-
-        WeatheredWellsEvents.register();
-
-        LOGGER.info("Weathered Wells initialized");
+/**
+ * Blessing of the Waterways: Lingering effect.
+ * Display-only; actual healing logic is handled by WaterHealingHandler.
+ */
+public class WaterwaysLingeringEffect extends MobEffect {
+    public WaterwaysLingeringEffect() {
+        super(MobEffectCategory.BENEFICIAL, 0x3CB4E8); // Water blue
     }
 }
