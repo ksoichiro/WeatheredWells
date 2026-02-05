@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "weatheredwells",
+  "version": "${version}",
+  "name": "Weathered Wells",
+  "description": "A small exploration mod where collecting totems from weathered wells grants gentle healing effects near water.",
+  "authors": [
+    "ksoichiro"
+  ],
+  "contact": {
+    "homepage": "https://github.com/ksoichiro/WeatheredWells",
+    "sources": "https://github.com/ksoichiro/WeatheredWells"
+  },
+  "license": "LGPL-3.0-only",
+  "icon": "assets/weatheredwells/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.weatheredwells.fabric.WeatheredWellsFabric"
+    ],
+    "client": [
+      "com.weatheredwells.fabric.WeatheredWellsFabricClient"
+    ]
+  },
+  "accessWidener": "weatheredwells.accesswidener",
+  "mixins": [
+    "weatheredwells.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "architectury": ">=9.2.14",
+    "minecraft": "~1.20.1",
+    "java": ">=17"
+  }
+}

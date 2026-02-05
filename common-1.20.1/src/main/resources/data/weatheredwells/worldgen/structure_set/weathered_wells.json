@@ -1,0 +1,30 @@
+{
+  "structures": [
+    {
+      "structure": "weatheredwells:forgotten_well",
+      "weight": 1
+    },
+    {
+      "structure": "weatheredwells:mossy_well",
+      "weight": 1
+    },
+    {
+      "structure": "weatheredwells:dry_well",
+      "weight": 1
+    },
+    {
+      "structure": "weatheredwells:clear_well",
+      "weight": 1
+    },
+    {
+      "structure": "weatheredwells:sunken_well",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 582917364,
+    "spacing": 20,
+    "separation": 16
+  }
+}

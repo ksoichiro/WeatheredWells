@@ -98,8 +98,8 @@ subprojects {
         javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
     }
 
-    // Common resource processing for platform modules (fabric, neoforge)
-    if (project.name in ['fabric', 'neoforge']) {
+    // Common resource processing for platform modules (fabric, neoforge, forge)
+    if (project.name in ['fabric', 'neoforge', 'forge']) {
         tasks.withType(ProcessResources).configureEach {
             inputs.property 'pack_format', project.ext.pack_format
 
