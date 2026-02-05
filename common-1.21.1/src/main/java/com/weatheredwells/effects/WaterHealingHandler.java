@@ -18,7 +18,9 @@
 package com.weatheredwells.effects;
 
 import com.weatheredwells.data.PlayerBuffData;
+import com.weatheredwells.registry.ModParticles;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.HashMap;
@@ -73,6 +75,18 @@ public class WaterHealingHandler {
                         float maxHealth = player.getMaxHealth();
                         if (currentHealth < maxHealth) {
                             player.heal(HEAL_AMOUNT);
+                            ServerLevel level = player.serverLevel();
+                            level.sendParticles(
+                                    ModParticles.WATER_HEALING.get(),
+                                    player.getX(),
+                                    player.getY() + 0.5,
+                                    player.getZ(),
+                                    2,
+                                    0.2,
+                                    0.3,
+                                    0.2,
+                                    0
+                            );
                         }
                     }
                 }

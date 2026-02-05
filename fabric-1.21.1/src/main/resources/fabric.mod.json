@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "com.weatheredwells.fabric.WeatheredWellsFabric"
+    ],
+    "client": [
+      "com.weatheredwells.fabric.WeatheredWellsFabricClient"
     ]
   },
   "accessWidener": "weatheredwells.accesswidener",
