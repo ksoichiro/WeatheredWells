@@ -28,7 +28,7 @@ dependencies {
 // Convert 1.21.1 NBT structure files to 1.20.1 format during build.
 // Output goes to build/generated/nbt so the source of truth remains the 1.21.1 files.
 def nbtInputDir  = rootProject.file('common-1.21.1/src/main/resources/data/weatheredwells/structure')
-def nbtOutputDir = layout.buildDirectory.dir('generated/nbt/data/weatheredwells/structure')
+def nbtOutputDir = layout.buildDirectory.dir('generated/nbt/data/weatheredwells/structures')
 
 tasks.register('convertNbt', Exec) {
     group = 'build'

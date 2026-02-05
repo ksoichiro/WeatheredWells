@@ -45,7 +45,7 @@
   ],
   "display": {
     "icon": {
-      "id": "minecraft:water_bucket"
+      "item": "minecraft:water_bucket"
     },
     "title": {
       "translate": "advancements.weatheredwells.at_home_in_water.title"

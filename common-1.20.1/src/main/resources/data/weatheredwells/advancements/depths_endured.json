@@ -16,7 +16,7 @@
   },
   "display": {
     "icon": {
-      "id": "weatheredwells:deep_totem"
+      "item": "weatheredwells:deep_totem"
     },
     "title": {
       "translate": "advancements.weatheredwells.depths_endured.title"

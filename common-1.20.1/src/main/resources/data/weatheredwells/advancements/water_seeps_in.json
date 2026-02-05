@@ -16,7 +16,7 @@
   },
   "display": {
     "icon": {
-      "id": "weatheredwells:soaked_totem"
+      "item": "weatheredwells:soaked_totem"
     },
     "title": {
       "translate": "advancements.weatheredwells.water_seeps_in.title"
