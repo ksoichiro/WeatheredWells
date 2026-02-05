@@ -65,7 +65,10 @@ loom {
 }
 
 processResources {
+    dependsOn project(commonModule).tasks.named('convertNbt')
     from(project(commonModule).sourceSets.main.resources)
+    // Include converted NBT files from common module
+    from(project(commonModule).layout.buildDirectory.dir('generated/nbt'))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     inputs.property 'version', project.version
