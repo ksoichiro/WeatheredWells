@@ -4,10 +4,6 @@ architectury {
 
 loom {
     accessWidenerPath = file("src/main/resources/weatheredwells.accesswidener")
-
-    mixin {
-        defaultRefmapName = "common-common-refmap.json"
-    }
 }
 
 sourceSets {
