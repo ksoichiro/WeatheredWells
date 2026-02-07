@@ -35,7 +35,7 @@ import net.minecraft.world.effect.MobEffectInstance;
  * Registers and handles mod events:
  * - Server tick: water healing logic
  * - Player advancement: grants buffs based on achievement
- * - Player join: restores MobEffect display from saved data
+ * - Player join/respawn: restores MobEffect display from saved data
  */
 public class WeatheredWellsEvents {
     private static final ResourceLocation ADV_WATER_SEEPS_IN =
@@ -53,6 +53,7 @@ public class WeatheredWellsEvents {
         TickEvent.SERVER_POST.register(WaterHealingHandler::onServerTick);
         PlayerEvent.PLAYER_ADVANCEMENT.register(WeatheredWellsEvents::onAdvancement);
         PlayerEvent.PLAYER_JOIN.register(WeatheredWellsEvents::onPlayerJoin);
+        PlayerEvent.PLAYER_RESPAWN.register(WeatheredWellsEvents::onPlayerRespawn);
     }
 
     private static void onAdvancement(ServerPlayer player, AdvancementHolder advancementHolder) {
@@ -79,6 +80,15 @@ public class WeatheredWellsEvents {
     }
 
     private static void onPlayerJoin(ServerPlayer player) {
+        restoreBuffEffects(player);
+    }
+
+    private static void onPlayerRespawn(ServerPlayer player, boolean endConquered,
+                                        net.minecraft.world.entity.Entity.RemovalReason removalReason) {
+        restoreBuffEffects(player);
+    }
+
+    private static void restoreBuffEffects(ServerPlayer player) {
         PlayerBuffData data = PlayerBuffData.get(player.server.overworld());
         int lingeringLevel = data.getLingeringLevel(player);
         if (lingeringLevel > 0) {
