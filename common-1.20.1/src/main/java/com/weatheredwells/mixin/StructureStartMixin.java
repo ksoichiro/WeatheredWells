@@ -70,7 +70,7 @@ public abstract class StructureStartMixin {
             ChunkPos chunkPos,
             CallbackInfo ci) {
 
-        if (!isWeatheredWellsStructure(level)) {
+        if (!isWeatheredWellsStructure(level) || isSunkenWell(level)) {
             return;
         }
 
@@ -106,7 +106,7 @@ public abstract class StructureStartMixin {
             ChunkPos chunkPos,
             CallbackInfo ci) {
 
-        if (!isWeatheredWellsStructure(level)) {
+        if (!isWeatheredWellsStructure(level) || isSunkenWell(level)) {
             WaterlogRemovalProcessor.INTENTIONAL_WATERLOGGING.clear();
             return;
         }
@@ -157,9 +157,19 @@ public abstract class StructureStartMixin {
     }
 
     private boolean isWeatheredWellsStructure(WorldGenLevel level) {
-        ResourceLocation loc = level.registryAccess()
+        ResourceLocation loc = getStructureLocation(level);
+        return loc != null && loc.getNamespace().equals(WeatheredWells.MOD_ID);
+    }
+
+    private boolean isSunkenWell(WorldGenLevel level) {
+        ResourceLocation loc = getStructureLocation(level);
+        return loc != null && loc.getNamespace().equals(WeatheredWells.MOD_ID)
+                && loc.getPath().equals("sunken_well");
+    }
+
+    private ResourceLocation getStructureLocation(WorldGenLevel level) {
+        return level.registryAccess()
                 .registryOrThrow(Registries.STRUCTURE)
                 .getKey(structure);
-        return loc != null && loc.getNamespace().equals(WeatheredWells.MOD_ID);
     }
 }

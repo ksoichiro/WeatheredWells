@@ -5,7 +5,7 @@
       "weight": 1,
       "element": {
         "location": "weatheredwells:sunken_well_bottom",
-        "processors": "weatheredwells:well_chest_loot",
+        "processors": "weatheredwells:sunken_well_bottom",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
