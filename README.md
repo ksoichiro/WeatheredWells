@@ -4,7 +4,7 @@
 
 A multi-loader Minecraft mod that adds weathered wells scattered across the world, each hiding a unique totem that grants permanent water-healing abilities.
 
-<!-- ![Weathered Wells Overview](docs/screenshots/featured-for-readme.png) -->
+![Weathered Wells Overview](docs/screenshots/featured-for-readme.png)
 
 ## Features
 
