@@ -29,13 +29,13 @@ public class ModItems {
             DeferredRegister.create(WeatheredWells.MOD_ID, Registries.ITEM);
 
     public static final RegistrySupplier<Item> SOAKED_TOTEM = ITEMS.register("soaked_totem",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
+            () -> new Item(ItemHelper.properties("soaked_totem").rarity(Rarity.UNCOMMON).stacksTo(1)));
 
     public static final RegistrySupplier<Item> CLEAR_TOTEM = ITEMS.register("clear_totem",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
+            () -> new Item(ItemHelper.properties("clear_totem").rarity(Rarity.UNCOMMON).stacksTo(1)));
 
     public static final RegistrySupplier<Item> DEEP_TOTEM = ITEMS.register("deep_totem",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
+            () -> new Item(ItemHelper.properties("deep_totem").rarity(Rarity.UNCOMMON).stacksTo(1)));
 
     public static void register() {
         ITEMS.register();

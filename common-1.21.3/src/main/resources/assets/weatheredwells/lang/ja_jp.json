@@ -1,0 +1,18 @@
+{
+  "itemGroup.weatheredwells.weatheredwells": "朽ちた井戸",
+  "item.weatheredwells.soaked_totem": "湿ったトーテム",
+  "item.weatheredwells.clear_totem": "澄んだトーテム",
+  "item.weatheredwells.deep_totem": "深層のトーテム",
+  "advancements.weatheredwells.root.title": "朽ちた井戸",
+  "advancements.weatheredwells.root.description": "世界に散らばる朽ちた井戸を見つけよう",
+  "advancements.weatheredwells.water_seeps_in.title": "水が馴染む",
+  "advancements.weatheredwells.water_seeps_in.description": "朽ちた井戸から湿ったトーテムを手に入れる",
+  "advancements.weatheredwells.clarity_settles.title": "澄み渡る感覚",
+  "advancements.weatheredwells.clarity_settles.description": "朽ちた井戸から澄んだトーテムを手に入れる",
+  "advancements.weatheredwells.depths_endured.title": "深みに適応する",
+  "advancements.weatheredwells.depths_endured.description": "朽ちた井戸から深層のトーテムを手に入れる",
+  "advancements.weatheredwells.at_home_in_water.title": "水と共にある",
+  "advancements.weatheredwells.at_home_in_water.description": "3つのトーテムをすべて集める",
+  "effect.weatheredwells.waterways_lingering": "水脈の加護：滞留",
+  "effect.weatheredwells.waterways_attunement": "水脈の加護：同化"
+}

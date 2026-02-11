@@ -12,24 +12,28 @@ Multi-loader Minecraft mod using Architectury:
 - `props/` - Version-specific properties files
 
 Supported versions:
+- 1.21.3: Fabric, NeoForge
 - 1.21.1: Fabric, NeoForge
 - 1.20.1: Fabric, Forge
 
 ## Build Commands
 
 ```bash
-# Full build for default version (1.21.1)
+# Full build for default version (1.21.3)
 ./gradlew build
 
 # Build for specific version
 ./gradlew build -Ptarget_mc_version=1.20.1
 ./gradlew build -Ptarget_mc_version=1.21.1
+./gradlew build -Ptarget_mc_version=1.21.3
 
 # Run client for testing
 ./gradlew fabric:runClient -Ptarget_mc_version=1.20.1
 ./gradlew forge:runClient -Ptarget_mc_version=1.20.1
 ./gradlew fabric:runClient -Ptarget_mc_version=1.21.1
 ./gradlew neoforge:runClient -Ptarget_mc_version=1.21.1
+./gradlew fabric:runClient -Ptarget_mc_version=1.21.3
+./gradlew neoforge:runClient -Ptarget_mc_version=1.21.3
 
 # Clean build
 ./gradlew clean build -Ptarget_mc_version=1.20.1
@@ -38,10 +42,11 @@ Supported versions:
 ## Key Files
 
 - `gradle.properties` - Mod version, target MC version
-- `props/1.21.1.properties` - Version-specific dependencies
+- `props/1.21.3.properties` - Version-specific dependencies (1.21.3)
+- `props/1.21.1.properties` - Version-specific dependencies (1.21.1)
 - `common-shared/.../WeatheredWells.java` - Main mod class
-- `common-1.21.1/.../events/WeatheredWellsEvents.java` - Event handlers
-- `common-1.21.1/.../mixin/` - Mixin implementations
+- `common-{version}/.../events/WeatheredWellsEvents.java` - Event handlers
+- `common-{version}/.../mixin/` - Mixin implementations
 
 ## Registries (common-shared)
 
@@ -61,6 +66,11 @@ Supported versions:
 
 ### Version-specific API differences
 
+**1.21.3 vs 1.21.1:**
+- RegistryAccess: 1.21.3 uses `lookupOrThrow()`, 1.21.1 uses `registryOrThrow()`
+- Item.Properties: 1.21.3 requires `setId(ResourceKey)` before Item construction (handled by `ItemHelper`)
+- pack_format: 1.21.3 uses 57, 1.21.1 uses 48
+
 **1.21.1 vs 1.20.1:**
 - SavedData: 1.21 uses `HolderLookup.Provider` parameter, 1.20.1 does not
 - ResourceLocation: 1.21 uses `fromNamespaceAndPath()`, 1.20.1 uses constructor
@@ -68,12 +78,16 @@ Supported versions:
 - MobEffect: 1.21 uses `Holder<MobEffect>`, 1.20.1 uses `MobEffect` directly
 - Codec: 1.21 uses `MapCodec`, 1.20.1 uses `Codec`
 
-### Forge 1.20.1 with Architectury Loom
+### Platform gradle.properties
 
-When using Architectury Loom 1.11+ with Forge 1.20.1, you must add `loom.platform = forge` to `forge-{version}/gradle.properties`. This is required because Loom defaults to Fabric mode.
+Platform-specific subprojects require `loom.platform` in their `gradle.properties`:
+- `neoforge-{version}/gradle.properties`: `loom.platform=neoforge`
+- `forge-{version}/gradle.properties`: `loom.platform=forge`
+
+This is required because Architectury Loom defaults to Fabric mode.
 
 ## Resources Location
 
-- Assets: `common-1.21.1/src/main/resources/assets/weatheredwells/`
-- Data (loot tables, structures, etc.): `common-1.21.1/src/main/resources/data/weatheredwells/`
-- Mixin config: `common-1.21.1/src/main/resources/weatheredwells.mixins.json`
+- Assets: `common-{version}/src/main/resources/assets/weatheredwells/`
+- Data (loot tables, structures, etc.): `common-{version}/src/main/resources/data/weatheredwells/`
+- Mixin config: `common-{version}/src/main/resources/weatheredwells.mixins.json`
