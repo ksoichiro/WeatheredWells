@@ -1,0 +1,32 @@
+{
+  "parent": "weatheredwells:root",
+  "criteria": {
+    "has_clear_totem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "weatheredwells:clear_totem"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "weatheredwells:clear_totem"
+    },
+    "title": {
+      "translate": "advancements.weatheredwells.clarity_settles.title"
+    },
+    "description": {
+      "translate": "advancements.weatheredwells.clarity_settles.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

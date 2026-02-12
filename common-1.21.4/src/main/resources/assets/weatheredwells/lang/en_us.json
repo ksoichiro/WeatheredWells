@@ -1,0 +1,18 @@
+{
+  "itemGroup.weatheredwells.weatheredwells": "Weathered Wells",
+  "item.weatheredwells.soaked_totem": "Soaked Totem",
+  "item.weatheredwells.clear_totem": "Clear Totem",
+  "item.weatheredwells.deep_totem": "Deep Totem",
+  "advancements.weatheredwells.root.title": "Weathered Wells",
+  "advancements.weatheredwells.root.description": "Discover weathered wells scattered across the world",
+  "advancements.weatheredwells.water_seeps_in.title": "Water Seeps In",
+  "advancements.weatheredwells.water_seeps_in.description": "Obtain a Soaked Totem from a weathered well",
+  "advancements.weatheredwells.clarity_settles.title": "Clarity Settles",
+  "advancements.weatheredwells.clarity_settles.description": "Obtain a Clear Totem from a weathered well",
+  "advancements.weatheredwells.depths_endured.title": "Depths Endured",
+  "advancements.weatheredwells.depths_endured.description": "Obtain a Deep Totem from a weathered well",
+  "advancements.weatheredwells.at_home_in_water.title": "At Home in Water",
+  "advancements.weatheredwells.at_home_in_water.description": "Collect all three totems from the weathered wells",
+  "effect.weatheredwells.waterways_lingering": "Blessing of the Waterways: Lingering",
+  "effect.weatheredwells.waterways_attunement": "Blessing of the Waterways: Attunement"
+}
