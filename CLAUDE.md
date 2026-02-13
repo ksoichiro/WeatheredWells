@@ -12,6 +12,7 @@ Multi-loader Minecraft mod using Architectury:
 - `props/` - Version-specific properties files
 
 Supported versions:
+- 1.21.5: Fabric, NeoForge
 - 1.21.4: Fabric, NeoForge
 - 1.21.3: Fabric, NeoForge
 - 1.21.1: Fabric, NeoForge
@@ -20,7 +21,7 @@ Supported versions:
 ## Build Commands
 
 ```bash
-# Full build for default version (1.21.4)
+# Full build for default version (1.21.5)
 ./gradlew build
 
 # Build for specific version
@@ -28,6 +29,7 @@ Supported versions:
 ./gradlew build -Ptarget_mc_version=1.21.1
 ./gradlew build -Ptarget_mc_version=1.21.3
 ./gradlew build -Ptarget_mc_version=1.21.4
+./gradlew build -Ptarget_mc_version=1.21.5
 
 # Run client for testing
 ./gradlew fabric:runClient -Ptarget_mc_version=1.20.1
@@ -38,6 +40,8 @@ Supported versions:
 ./gradlew neoforge:runClient -Ptarget_mc_version=1.21.3
 ./gradlew fabric:runClient -Ptarget_mc_version=1.21.4
 ./gradlew neoforge:runClient -Ptarget_mc_version=1.21.4
+./gradlew fabric:runClient -Ptarget_mc_version=1.21.5
+./gradlew neoforge:runClient -Ptarget_mc_version=1.21.5
 
 # Clean build
 ./gradlew clean build -Ptarget_mc_version=1.20.1
@@ -46,6 +50,7 @@ Supported versions:
 ## Key Files
 
 - `gradle.properties` - Mod version, target MC version
+- `props/1.21.5.properties` - Version-specific dependencies (1.21.5)
 - `props/1.21.4.properties` - Version-specific dependencies (1.21.4)
 - `props/1.21.3.properties` - Version-specific dependencies (1.21.3)
 - `props/1.21.1.properties` - Version-specific dependencies (1.21.1)
@@ -70,6 +75,12 @@ Supported versions:
 - Player buff data persists via SavedData (world-level storage)
 
 ### Version-specific API differences
+
+**1.21.5 vs 1.21.4:**
+- SavedData: 1.21.5 uses Codec-based `SavedDataType<T>` instead of `SavedData.Factory<T>` with manual NBT save/load
+- CompoundTag: `getCompound()`, `getInt()`, `getBoolean()` return `Optional`; use `getCompoundOrEmpty()`, `getIntOr()`, `getBooleanOr()` for non-optional access; `getAllKeys()` renamed to `keySet()`
+- Advancement background: 1.21.5 uses `gui/advancements/backgrounds/<name>` resource location instead of direct texture path
+- pack_format: 1.21.5 uses 71, 1.21.4 uses 61
 
 **1.21.4 vs 1.21.3:**
 - Client Items: 1.21.4 requires item model definitions in `assets/<namespace>/items/<path>.json` (Client Items system)
