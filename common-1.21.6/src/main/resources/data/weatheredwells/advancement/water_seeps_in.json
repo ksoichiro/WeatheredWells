@@ -1,0 +1,32 @@
+{
+  "parent": "weatheredwells:root",
+  "criteria": {
+    "has_soaked_totem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "weatheredwells:soaked_totem"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "weatheredwells:soaked_totem"
+    },
+    "title": {
+      "translate": "advancements.weatheredwells.water_seeps_in.title"
+    },
+    "description": {
+      "translate": "advancements.weatheredwells.water_seeps_in.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

@@ -12,6 +12,7 @@ Multi-loader Minecraft mod using Architectury:
 - `props/` - Version-specific properties files
 
 Supported versions:
+- 1.21.6: Fabric, NeoForge
 - 1.21.5: Fabric, NeoForge
 - 1.21.4: Fabric, NeoForge
 - 1.21.3: Fabric, NeoForge
@@ -21,7 +22,7 @@ Supported versions:
 ## Build Commands
 
 ```bash
-# Full build for default version (1.21.5)
+# Full build for default version (1.21.6)
 ./gradlew build
 
 # Build for specific version
@@ -30,6 +31,7 @@ Supported versions:
 ./gradlew build -Ptarget_mc_version=1.21.3
 ./gradlew build -Ptarget_mc_version=1.21.4
 ./gradlew build -Ptarget_mc_version=1.21.5
+./gradlew build -Ptarget_mc_version=1.21.6
 
 # Run client for testing
 ./gradlew fabric:runClient -Ptarget_mc_version=1.20.1
@@ -42,6 +44,8 @@ Supported versions:
 ./gradlew neoforge:runClient -Ptarget_mc_version=1.21.4
 ./gradlew fabric:runClient -Ptarget_mc_version=1.21.5
 ./gradlew neoforge:runClient -Ptarget_mc_version=1.21.5
+./gradlew fabric:runClient -Ptarget_mc_version=1.21.6
+./gradlew neoforge:runClient -Ptarget_mc_version=1.21.6
 
 # Clean build
 ./gradlew clean build -Ptarget_mc_version=1.20.1
@@ -50,6 +54,7 @@ Supported versions:
 ## Key Files
 
 - `gradle.properties` - Mod version, target MC version
+- `props/1.21.6.properties` - Version-specific dependencies (1.21.6)
 - `props/1.21.5.properties` - Version-specific dependencies (1.21.5)
 - `props/1.21.4.properties` - Version-specific dependencies (1.21.4)
 - `props/1.21.3.properties` - Version-specific dependencies (1.21.3)
@@ -75,6 +80,13 @@ Supported versions:
 - Player buff data persists via SavedData (world-level storage)
 
 ### Version-specific API differences
+
+**1.21.6 vs 1.21.5:**
+- Entity.server: field is now private, use `getServer()` accessor instead of `player.server`
+- ServerPlayer.serverLevel(): removed, use `(ServerLevel) player.level()` instead
+- NeoForge @EventBusSubscriber: `bus` parameter and `Bus` enum removed; annotation auto-registers to both buses
+- BlockEntity serialization: 1.21.6 uses ReadView/WriteView abstractions instead of direct NBT access (not affecting this mod's Codec-based SavedData)
+- pack_format: 1.21.6 uses 80, 1.21.5 uses 71
 
 **1.21.5 vs 1.21.4:**
 - SavedData: 1.21.5 uses Codec-based `SavedDataType<T>` instead of `SavedData.Factory<T>` with manual NBT save/load
