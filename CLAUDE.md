@@ -12,6 +12,7 @@ Multi-loader Minecraft mod using Architectury:
 - `props/` - Version-specific properties files
 
 Supported versions:
+- 1.21.7: Fabric, NeoForge
 - 1.21.6: Fabric, NeoForge
 - 1.21.5: Fabric, NeoForge
 - 1.21.4: Fabric, NeoForge
@@ -22,7 +23,7 @@ Supported versions:
 ## Build Commands
 
 ```bash
-# Full build for default version (1.21.6)
+# Full build for default version (1.21.7)
 ./gradlew build
 
 # Build for specific version
@@ -32,6 +33,7 @@ Supported versions:
 ./gradlew build -Ptarget_mc_version=1.21.4
 ./gradlew build -Ptarget_mc_version=1.21.5
 ./gradlew build -Ptarget_mc_version=1.21.6
+./gradlew build -Ptarget_mc_version=1.21.7
 
 # Run client for testing
 ./gradlew fabric:runClient -Ptarget_mc_version=1.20.1
@@ -46,6 +48,8 @@ Supported versions:
 ./gradlew neoforge:runClient -Ptarget_mc_version=1.21.5
 ./gradlew fabric:runClient -Ptarget_mc_version=1.21.6
 ./gradlew neoforge:runClient -Ptarget_mc_version=1.21.6
+./gradlew fabric:runClient -Ptarget_mc_version=1.21.7
+./gradlew neoforge:runClient -Ptarget_mc_version=1.21.7
 
 # Clean build
 ./gradlew clean build -Ptarget_mc_version=1.20.1
@@ -54,6 +58,7 @@ Supported versions:
 ## Key Files
 
 - `gradle.properties` - Mod version, target MC version
+- `props/1.21.7.properties` - Version-specific dependencies (1.21.7)
 - `props/1.21.6.properties` - Version-specific dependencies (1.21.6)
 - `props/1.21.5.properties` - Version-specific dependencies (1.21.5)
 - `props/1.21.4.properties` - Version-specific dependencies (1.21.4)
@@ -80,6 +85,10 @@ Supported versions:
 - Player buff data persists via SavedData (world-level storage)
 
 ### Version-specific API differences
+
+**1.21.7 vs 1.21.6:**
+- pack_format: 1.21.7 uses 81, 1.21.6 uses 80
+- No breaking Java API changes for this mod's usage
 
 **1.21.6 vs 1.21.5:**
 - Entity.server: field is now private, use `getServer()` accessor instead of `player.server`
