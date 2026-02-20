@@ -1,0 +1,61 @@
+{
+  "parent": "weatheredwells:root",
+  "criteria": {
+    "has_soaked_totem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "weatheredwells:soaked_totem"
+            ]
+          }
+        ]
+      }
+    },
+    "has_clear_totem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "weatheredwells:clear_totem"
+            ]
+          }
+        ]
+      }
+    },
+    "has_deep_totem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "weatheredwells:deep_totem"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_soaked_totem"],
+    ["has_clear_totem"],
+    ["has_deep_totem"]
+  ],
+  "display": {
+    "icon": {
+      "id": "minecraft:water_bucket"
+    },
+    "title": {
+      "translate": "advancements.weatheredwells.at_home_in_water.title"
+    },
+    "description": {
+      "translate": "advancements.weatheredwells.at_home_in_water.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}
