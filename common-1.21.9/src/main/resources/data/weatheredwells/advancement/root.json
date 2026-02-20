@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "in_overworld": {
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "weatheredwells:soaked_totem"
+    },
+    "title": {
+      "translate": "advancements.weatheredwells.root.title"
+    },
+    "description": {
+      "translate": "advancements.weatheredwells.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "background": "minecraft:gui/advancements/backgrounds/stone"
+  }
+}
