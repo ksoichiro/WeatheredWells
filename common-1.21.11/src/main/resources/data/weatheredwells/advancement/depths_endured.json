@@ -1,0 +1,32 @@
+{
+  "parent": "weatheredwells:root",
+  "criteria": {
+    "has_deep_totem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "weatheredwells:deep_totem"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "weatheredwells:deep_totem"
+    },
+    "title": {
+      "translate": "advancements.weatheredwells.depths_endured.title"
+    },
+    "description": {
+      "translate": "advancements.weatheredwells.depths_endured.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}
