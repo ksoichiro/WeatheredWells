@@ -3,12 +3,14 @@
 ## Project Structure
 
 Multi-loader Minecraft mod using Architectury:
-- `common-shared/` - Version-agnostic shared code (registries)
-- `common-{version}/` - Version-specific common code (effects, events, mixins)
-- `fabric-{version}/` - Fabric platform implementation
-- `neoforge-{version}/` - NeoForge platform implementation (1.21+)
-- `forge-{version}/` - Forge platform implementation (1.20.x)
-- `fabric-base/`, `neoforge-base/`, `forge-base/` - Base platform configs
+- `common/shared/` - Version-agnostic shared code (registries)
+- `common/{version}/` - Version-specific common code (effects, events, mixins)
+- `fabric/{version}/` - Fabric platform implementation
+- `fabric/base/` - Fabric base platform config
+- `neoforge/{version}/` - NeoForge platform implementation (1.21+)
+- `neoforge/base/` - NeoForge base platform config
+- `forge/{version}/` - Forge platform implementation (1.20.x)
+- `forge/base/` - Forge base platform config
 - `props/` - Version-specific properties files
 
 Supported versions:
@@ -84,11 +86,11 @@ Supported versions:
 - `props/1.21.4.properties` - Version-specific dependencies (1.21.4)
 - `props/1.21.3.properties` - Version-specific dependencies (1.21.3)
 - `props/1.21.1.properties` - Version-specific dependencies (1.21.1)
-- `common-shared/.../WeatheredWells.java` - Main mod class
-- `common-{version}/.../events/WeatheredWellsEvents.java` - Event handlers
-- `common-{version}/.../mixin/` - Mixin implementations
+- `common/shared/.../WeatheredWells.java` - Main mod class
+- `common/{version}/.../events/WeatheredWellsEvents.java` - Event handlers
+- `common/{version}/.../mixin/` - Mixin implementations
 
-## Registries (common-shared)
+## Registries (common/shared)
 
 - `ModItems` - Totem items
 - `ModEffects` - Custom mob effects
@@ -99,8 +101,8 @@ Supported versions:
 ## Development Notes
 
 - Use Architectury API for cross-loader compatibility
-- Platform-specific code goes in `fabric-*/`, `neoforge-*/`, or `forge-*/`
-- Version-specific common code goes in `common-{version}/`
+- Platform-specific code goes in `fabric/{version}/`, `neoforge/{version}/`, or `forge/{version}/`
+- Version-specific common code goes in `common/{version}/`
 - Structures use Jigsaw system with template pools
 - Player buff data persists via SavedData (world-level storage)
 
@@ -160,13 +162,13 @@ Supported versions:
 ### Platform gradle.properties
 
 Platform-specific subprojects require `loom.platform` in their `gradle.properties`:
-- `neoforge-{version}/gradle.properties`: `loom.platform=neoforge`
-- `forge-{version}/gradle.properties`: `loom.platform=forge`
+- `neoforge/{version}/gradle.properties`: `loom.platform=neoforge`
+- `forge/{version}/gradle.properties`: `loom.platform=forge`
 
 This is required because Architectury Loom defaults to Fabric mode.
 
 ## Resources Location
 
-- Assets: `common-{version}/src/main/resources/assets/weatheredwells/`
-- Data (loot tables, structures, etc.): `common-{version}/src/main/resources/data/weatheredwells/`
-- Mixin config: `common-{version}/src/main/resources/weatheredwells.mixins.json`
+- Assets: `common/{version}/src/main/resources/assets/weatheredwells/`
+- Data (loot tables, structures, etc.): `common/{version}/src/main/resources/data/weatheredwells/`
+- Mixin config: `common/{version}/src/main/resources/weatheredwells.mixins.json`
