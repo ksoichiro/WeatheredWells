@@ -17,28 +17,25 @@
  */
 package com.weatheredwells.registry;
 
-import com.weatheredwells.WeatheredWells;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
+import java.util.function.Supplier;
+
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(WeatheredWells.MOD_ID, Registries.ITEM);
+    public static Supplier<Item> SOAKED_TOTEM;
+    public static Supplier<Item> CLEAR_TOTEM;
+    public static Supplier<Item> DEEP_TOTEM;
 
-    public static final RegistrySupplier<Item> SOAKED_TOTEM = ITEMS.register("soaked_totem",
-            () -> new Item(ItemHelper.properties("soaked_totem").rarity(Rarity.UNCOMMON).stacksTo(1)));
+    public static Item createSoakedTotem() {
+        return new Item(ItemHelper.properties("soaked_totem").rarity(Rarity.UNCOMMON).stacksTo(1));
+    }
 
-    public static final RegistrySupplier<Item> CLEAR_TOTEM = ITEMS.register("clear_totem",
-            () -> new Item(ItemHelper.properties("clear_totem").rarity(Rarity.UNCOMMON).stacksTo(1)));
+    public static Item createClearTotem() {
+        return new Item(ItemHelper.properties("clear_totem").rarity(Rarity.UNCOMMON).stacksTo(1));
+    }
 
-    public static final RegistrySupplier<Item> DEEP_TOTEM = ITEMS.register("deep_totem",
-            () -> new Item(ItemHelper.properties("deep_totem").rarity(Rarity.UNCOMMON).stacksTo(1)));
-
-    public static void register() {
-        ITEMS.register();
-        WeatheredWells.LOGGER.debug("Registered ModItems");
+    public static Item createDeepTotem() {
+        return new Item(ItemHelper.properties("deep_totem").rarity(Rarity.UNCOMMON).stacksTo(1));
     }
 }

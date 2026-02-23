@@ -2,7 +2,7 @@
 
 ## Project Structure
 
-Multi-loader Minecraft mod using Architectury:
+Multi-loader Minecraft mod using Architectury Loom (build tooling only):
 - `common/shared/` - Version-agnostic shared code (registries)
 - `common/{version}/` - Version-specific common code (effects, events, mixins)
 - `fabric/{version}/` - Fabric platform implementation
@@ -100,8 +100,10 @@ Supported versions:
 
 ## Development Notes
 
-- Use Architectury API for cross-loader compatibility
-- Platform-specific code goes in `fabric/{version}/`, `neoforge/{version}/`, or `forge/{version}/`
+- Architectury Loom and Plugin are used as build tooling only; Architectury API is NOT a runtime dependency
+- Platform-specific code (registration, events) goes in `fabric/{version}/`, `neoforge/{version}/`, or `forge/{version}/`
+- Shared registry classes in `common/shared/` use `Supplier<T>` fields + factory methods; platform entry points assign the suppliers
+- Advancement events use a common mixin (`PlayerAdvancementsMixin`) instead of platform event APIs
 - Version-specific common code goes in `common/{version}/`
 - Structures use Jigsaw system with template pools
 - Player buff data persists via SavedData (world-level storage)
@@ -111,7 +113,6 @@ Supported versions:
 **1.21.11 vs 1.21.10:**
 - ResourceLocation: renamed to `Identifier` (`net.minecraft.resources.Identifier`); `fromNamespaceAndPath()` method name unchanged
 - pack_format: 1.21.11 uses min=75, max=94; 1.21.10 uses min=69, max=88
-- Architectury API: 19.0.1 (up from 18.0.8)
 
 **1.21.10 vs 1.21.9:**
 - pack_format: same as 1.21.9 (min=69, max=88)

@@ -17,34 +17,10 @@
  */
 package com.weatheredwells.registry;
 
-import com.weatheredwells.WeatheredWells;
-import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
+
+import java.util.function.Supplier;
 
 public class ModCreativeTabs {
-    public static final DeferredRegister<CreativeModeTab> TABS =
-            DeferredRegister.create(WeatheredWells.MOD_ID, Registries.CREATIVE_MODE_TAB);
-
-    public static final RegistrySupplier<CreativeModeTab> WEATHERED_WELLS_TAB = TABS.register(
-            "weatheredwells",
-            () -> CreativeTabRegistry.create(builder ->
-                    builder.title(Component.translatable("itemGroup.weatheredwells.weatheredwells"))
-                            .icon(() -> new ItemStack(ModItems.SOAKED_TOTEM.get()))
-                            .displayItems((parameters, output) -> {
-                                output.accept(ModItems.SOAKED_TOTEM.get());
-                                output.accept(ModItems.CLEAR_TOTEM.get());
-                                output.accept(ModItems.DEEP_TOTEM.get());
-                            })
-            )
-    );
-
-    public static void register() {
-        TABS.register();
-        WeatheredWells.LOGGER.debug("Registered ModCreativeTabs");
-    }
+    public static Supplier<CreativeModeTab> WEATHERED_WELLS_TAB;
 }

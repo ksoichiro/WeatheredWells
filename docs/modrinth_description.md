@@ -66,7 +66,7 @@ All buffs are **permanent** and **persist through death**.
 ## 🛠️ Technical Details
 
 ### Multi-Loader Support
-This mod is built with **Architectury** and supports **multiple mod loaders and versions**!
+This mod supports **multiple mod loaders and versions**!
 - **Fabric** and **NeoForge** for Minecraft 1.21.1
 - **Fabric** and **Forge** for Minecraft 1.20.1
 - Download the correct version for your mod loader
@@ -78,15 +78,11 @@ This mod is built with **Architectury** and supports **multiple mod loaders and 
 - **Mod Loader**:
   - Fabric Loader 0.17.3+ with Fabric API 0.116.7+1.21.1, OR
   - NeoForge 21.1.209+
-- **Dependencies**:
-  - Architectury API 13.0.8+
 
 #### Minecraft 1.20.1
 - **Mod Loader**:
   - Fabric Loader 0.16.10+ with Fabric API 0.92.2+1.20.1, OR
   - Forge 47.3.0+
-- **Dependencies**:
-  - Architectury API 9.2.14+
 
 ### Compatibility
 - Works alongside other world generation mods
@@ -112,7 +108,7 @@ Check out the **Gallery** above for screenshots showcasing:
 
 ## 🤝 Credits
 
-- Built with [Architectury](https://github.com/architectury/architectury-api)
+- Built with [Architectury Loom](https://github.com/architectury/architectury-loom)
 
 ---
 

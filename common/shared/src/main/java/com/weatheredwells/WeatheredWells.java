@@ -17,12 +17,6 @@
  */
 package com.weatheredwells;
 
-import com.weatheredwells.events.WeatheredWellsEvents;
-import com.weatheredwells.registry.ModCreativeTabs;
-import com.weatheredwells.registry.ModEffects;
-import com.weatheredwells.registry.ModItems;
-import com.weatheredwells.registry.ModParticles;
-import com.weatheredwells.registry.ModProcessors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,14 +25,6 @@ public class WeatheredWells {
     public static final Logger LOGGER = LoggerFactory.getLogger(WeatheredWells.class);
 
     public static void init() {
-        ModItems.register();
-        ModEffects.register();
-        ModParticles.register();
-        ModProcessors.register();
-        ModCreativeTabs.register();
-
-        WeatheredWellsEvents.register();
-
         LOGGER.info("Weathered Wells initialized");
     }
 }

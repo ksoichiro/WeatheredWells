@@ -41,8 +41,6 @@ Collecting totems grants permanent buffs that persist through death:
 - **Mod Loader**:
   - **Fabric**: Fabric Loader 0.17.3+ with Fabric API
   - **NeoForge**: NeoForge 21.1.209+
-- **Dependencies**: Architectury API 13.0.8+
-
 ### For Developers
 - **Java Development Kit (JDK)**: 21 or higher
 - **IDE**: IntelliJ IDEA (recommended) or Eclipse
@@ -105,15 +103,13 @@ Launch the development client and verify:
 1. Install Minecraft 1.21.1
 2. Install Fabric Loader 0.17.3+
 3. Download and install Fabric API
-4. Download and install Architectury API 13.0.8+
-5. Copy `weatheredwells-0.1.0+1.21.1-fabric.jar` to `.minecraft/mods/` folder
+4. Copy `weatheredwells-0.1.0+1.21.1-fabric.jar` to `.minecraft/mods/` folder
 6. Launch Minecraft with Fabric profile
 
 ### For NeoForge (Minecraft 1.21.1)
 1. Install Minecraft 1.21.1
 2. Install NeoForge 21.1.209+
-3. Download and install Architectury API 13.0.8+
-4. Copy `weatheredwells-0.1.0+1.21.1-neoforge.jar` to `.minecraft/mods/` folder
+3. Copy `weatheredwells-0.1.0+1.21.1-neoforge.jar` to `.minecraft/mods/` folder
 5. Launch Minecraft with NeoForge profile
 
 ## Project Structure
@@ -150,14 +146,11 @@ WeatheredWells/
 ### Official Documentation
 - [Fabric Documentation](https://docs.fabricmc.net/)
 - [NeoForge Documentation](https://docs.neoforged.net/)
-- [Architectury Documentation](https://docs.architectury.dev/)
 - [Minecraft Wiki](https://minecraft.wiki)
 
 ### Community
 - [Fabric Discord](https://discord.gg/v6v4pMv)
 - [NeoForge Discord](https://discord.neoforged.net/)
-- [Architectury Discord](https://discord.gg/architectury)
-
 ## License
 
 This project is licensed under the **GNU Lesser General Public License v3.0 (LGPL-3.0)**.
@@ -168,7 +161,7 @@ See the [COPYING](COPYING) and [COPYING.LESSER](COPYING.LESSER) files for full l
 
 ## Credits
 
-- Built with [Architectury](https://github.com/architectury/architectury-api)
+- Built with [Architectury Loom](https://github.com/architectury/architectury-loom)
 
 ## Support
 

@@ -4,6 +4,7 @@
   "package": "com.weatheredwells.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "PlayerAdvancementsMixin",
     "StructureStartMixin"
   ],
   "injectors": {

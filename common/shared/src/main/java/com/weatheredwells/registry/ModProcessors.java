@@ -17,34 +17,28 @@
  */
 package com.weatheredwells.registry;
 
-import com.weatheredwells.WeatheredWells;
 import com.weatheredwells.worldgen.ChestLootProcessor;
 import com.weatheredwells.worldgen.WaterlogRemovalProcessor;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 
+import java.util.function.Supplier;
+
 public class ModProcessors {
-    public static final DeferredRegister<StructureProcessorType<?>> PROCESSOR_TYPES =
-            DeferredRegister.create(WeatheredWells.MOD_ID, Registries.STRUCTURE_PROCESSOR);
+    public static Supplier<StructureProcessorType<?>> CHEST_LOOT;
+    public static Supplier<StructureProcessorType<?>> WATERLOG_REMOVAL;
 
-    public static final RegistrySupplier<StructureProcessorType<ChestLootProcessor>> CHEST_LOOT =
-            PROCESSOR_TYPES.register("chest_loot",
-                    () -> () -> ChestLootProcessor.CODEC);
-
-    public static final RegistrySupplier<StructureProcessorType<WaterlogRemovalProcessor>> WATERLOG_REMOVAL =
-            PROCESSOR_TYPES.register("waterlog_removal",
-                    () -> () -> WaterlogRemovalProcessor.CODEC);
-
-    public static void register() {
-        PROCESSOR_TYPES.register();
-        WeatheredWells.LOGGER.debug("Registered ModProcessors");
+    public static StructureProcessorType<ChestLootProcessor> createChestLoot() {
+        return () -> ChestLootProcessor.CODEC;
     }
 
+    public static StructureProcessorType<WaterlogRemovalProcessor> createWaterlogRemoval() {
+        return () -> WaterlogRemovalProcessor.CODEC;
+    }
+
+    @SuppressWarnings("unchecked")
     public static void init() {
         // Called after registration to wire the TYPE fields
-        ChestLootProcessor.TYPE = CHEST_LOOT.get();
-        WaterlogRemovalProcessor.TYPE = WATERLOG_REMOVAL.get();
+        ChestLootProcessor.TYPE = (StructureProcessorType<ChestLootProcessor>) CHEST_LOOT.get();
+        WaterlogRemovalProcessor.TYPE = (StructureProcessorType<WaterlogRemovalProcessor>) WATERLOG_REMOVAL.get();
     }
 }

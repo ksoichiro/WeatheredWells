@@ -17,26 +17,21 @@
  */
 package com.weatheredwells.registry;
 
-import com.weatheredwells.WeatheredWells;
-import com.weatheredwells.effects.WaterwaysLingeringEffect;
 import com.weatheredwells.effects.WaterwaysAttunementEffect;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
+import com.weatheredwells.effects.WaterwaysLingeringEffect;
 import net.minecraft.world.effect.MobEffect;
 
+import java.util.function.Supplier;
+
 public class ModEffects {
-    public static final DeferredRegister<MobEffect> EFFECTS =
-            DeferredRegister.create(WeatheredWells.MOD_ID, Registries.MOB_EFFECT);
+    public static Supplier<MobEffect> WATERWAYS_LINGERING;
+    public static Supplier<MobEffect> WATERWAYS_ATTUNEMENT;
 
-    public static final RegistrySupplier<MobEffect> WATERWAYS_LINGERING =
-            EFFECTS.register("waterways_lingering", WaterwaysLingeringEffect::new);
+    public static MobEffect createWaterwaysLingering() {
+        return new WaterwaysLingeringEffect();
+    }
 
-    public static final RegistrySupplier<MobEffect> WATERWAYS_ATTUNEMENT =
-            EFFECTS.register("waterways_attunement", WaterwaysAttunementEffect::new);
-
-    public static void register() {
-        EFFECTS.register();
-        WeatheredWells.LOGGER.debug("Registered ModEffects");
+    public static MobEffect createWaterwaysAttunement() {
+        return new WaterwaysAttunementEffect();
     }
 }

@@ -17,22 +17,14 @@
  */
 package com.weatheredwells.registry;
 
-import com.weatheredwells.WeatheredWells;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.registries.Registries;
+
+import java.util.function.Supplier;
 
 public class ModParticles {
-    public static final DeferredRegister<ParticleType<?>> PARTICLES =
-            DeferredRegister.create(WeatheredWells.MOD_ID, Registries.PARTICLE_TYPE);
+    public static Supplier<SimpleParticleType> WATER_HEALING;
 
-    public static final RegistrySupplier<SimpleParticleType> WATER_HEALING =
-            PARTICLES.register("water_healing", () -> new SimpleParticleType(false));
-
-    public static void register() {
-        PARTICLES.register();
-        WeatheredWells.LOGGER.debug("Registered ModParticles");
+    public static SimpleParticleType createWaterHealing() {
+        return new SimpleParticleType(false);
     }
 }

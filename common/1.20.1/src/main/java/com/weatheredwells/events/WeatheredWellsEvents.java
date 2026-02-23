@@ -19,10 +19,7 @@ package com.weatheredwells.events;
 
 import com.weatheredwells.WeatheredWells;
 import com.weatheredwells.data.PlayerBuffData;
-import com.weatheredwells.effects.WaterHealingHandler;
 import com.weatheredwells.registry.ModEffects;
-import dev.architectury.event.events.common.PlayerEvent;
-import dev.architectury.event.events.common.TickEvent;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,8 +27,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 
 /**
- * Registers and handles mod events:
- * - Server tick: water healing logic
+ * Handles mod events:
  * - Player advancement: grants buffs based on achievement
  * - Player join/respawn: restores MobEffect display from saved data
  */
@@ -47,14 +43,7 @@ public class WeatheredWellsEvents {
 
     private static final int INFINITE_DURATION = -1;
 
-    public static void register() {
-        TickEvent.SERVER_POST.register(WaterHealingHandler::onServerTick);
-        PlayerEvent.PLAYER_ADVANCEMENT.register(WeatheredWellsEvents::onAdvancement);
-        PlayerEvent.PLAYER_JOIN.register(WeatheredWellsEvents::onPlayerJoin);
-        PlayerEvent.PLAYER_RESPAWN.register(WeatheredWellsEvents::onPlayerRespawn);
-    }
-
-    private static void onAdvancement(ServerPlayer player, Advancement advancement) {
+    public static void onAdvancement(ServerPlayer player, Advancement advancement) {
         ResourceLocation id = advancement.getId();
         PlayerBuffData data = PlayerBuffData.get(player.server.overworld());
 
@@ -77,11 +66,11 @@ public class WeatheredWellsEvents {
         }
     }
 
-    private static void onPlayerJoin(ServerPlayer player) {
+    public static void onPlayerJoin(ServerPlayer player) {
         restoreBuffEffects(player);
     }
 
-    private static void onPlayerRespawn(ServerPlayer player, boolean endConquered) {
+    public static void onPlayerRespawn(ServerPlayer player) {
         restoreBuffEffects(player);
     }
 
