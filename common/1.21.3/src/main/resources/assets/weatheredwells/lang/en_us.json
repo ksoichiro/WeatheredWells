@@ -14,5 +14,8 @@
   "advancements.weatheredwells.at_home_in_water.title": "At Home in Water",
   "advancements.weatheredwells.at_home_in_water.description": "Collect all three totems from the weathered wells",
   "effect.weatheredwells.waterways_lingering": "Blessing of the Waterways: Lingering",
-  "effect.weatheredwells.waterways_attunement": "Blessing of the Waterways: Attunement"
+  "effect.weatheredwells.waterways_attunement": "Blessing of the Waterways: Attunement",
+  "effect.weatheredwells.waterways_immersion": "Blessing of the Waterways: Immersion",
+  "advancements.weatheredwells.wells_explored.title": "Well Traveled",
+  "advancements.weatheredwells.wells_explored.description": "Discover all five types of weathered wells"
 }

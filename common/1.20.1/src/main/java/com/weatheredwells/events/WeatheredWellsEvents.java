@@ -40,6 +40,8 @@ public class WeatheredWellsEvents {
             new ResourceLocation(WeatheredWells.MOD_ID, "depths_endured");
     private static final ResourceLocation ADV_AT_HOME_IN_WATER =
             new ResourceLocation(WeatheredWells.MOD_ID, "at_home_in_water");
+    private static final ResourceLocation ADV_WELLS_EXPLORED =
+            new ResourceLocation(WeatheredWells.MOD_ID, "wells_explored");
 
     private static final int INFINITE_DURATION = -1;
 
@@ -64,6 +66,13 @@ public class WeatheredWellsEvents {
             WeatheredWells.LOGGER.debug("Granted waterways attunement to {}",
                     player.getName().getString());
         }
+
+        if (id.equals(ADV_WELLS_EXPLORED)) {
+            data.setImmersion(player, true);
+            applyImmersionEffect(player);
+            WeatheredWells.LOGGER.debug("Granted waterways immersion to {}",
+                    player.getName().getString());
+        }
     }
 
     public static void onPlayerJoin(ServerPlayer player) {
@@ -83,6 +92,9 @@ public class WeatheredWellsEvents {
         if (data.hasAttunement(player)) {
             applyAttunementEffect(player);
         }
+        if (data.hasImmersion(player)) {
+            applyImmersionEffect(player);
+        }
     }
 
     private static void applyLingeringEffect(ServerPlayer player, int level) {
@@ -100,6 +112,18 @@ public class WeatheredWellsEvents {
 
     private static void applyAttunementEffect(ServerPlayer player) {
         MobEffect effect = ModEffects.WATERWAYS_ATTUNEMENT.get();
+        player.addEffect(new MobEffectInstance(
+                effect,
+                INFINITE_DURATION,
+                0,
+                true,      // ambient (no particles)
+                false,     // no visible particles
+                true       // show icon
+        ));
+    }
+
+    private static void applyImmersionEffect(ServerPlayer player) {
+        MobEffect effect = ModEffects.WATERWAYS_IMMERSION.get();
         player.addEffect(new MobEffectInstance(
                 effect,
                 INFINITE_DURATION,

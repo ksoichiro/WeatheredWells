@@ -36,6 +36,7 @@ public class PlayerBuffData extends SavedData {
     private static final String TAG_PLAYERS = "players";
     private static final String TAG_LINGERING_LEVEL = "lingering_level";
     private static final String TAG_ATTUNEMENT = "attunement";
+    private static final String TAG_IMMERSION = "immersion";
 
     private final Map<UUID, PlayerBuff> playerBuffs = new HashMap<>();
 
@@ -54,7 +55,8 @@ public class PlayerBuffData extends SavedData {
             CompoundTag playerTag = playersTag.getCompound(key);
             PlayerBuff buff = new PlayerBuff(
                     playerTag.getInt(TAG_LINGERING_LEVEL),
-                    playerTag.getBoolean(TAG_ATTUNEMENT)
+                    playerTag.getBoolean(TAG_ATTUNEMENT),
+                    playerTag.getBoolean(TAG_IMMERSION)
             );
             data.playerBuffs.put(uuid, buff);
         }
@@ -68,6 +70,7 @@ public class PlayerBuffData extends SavedData {
             CompoundTag playerTag = new CompoundTag();
             playerTag.putInt(TAG_LINGERING_LEVEL, entry.getValue().lingeringLevel);
             playerTag.putBoolean(TAG_ATTUNEMENT, entry.getValue().attunement);
+            playerTag.putBoolean(TAG_IMMERSION, entry.getValue().immersion);
             playersTag.put(entry.getKey().toString(), playerTag);
         }
         tag.put(TAG_PLAYERS, playersTag);
@@ -80,7 +83,7 @@ public class PlayerBuffData extends SavedData {
     }
 
     public void setLingeringLevel(ServerPlayer player, int level) {
-        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false));
+        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false, false));
         buff.lingeringLevel = Math.min(level, 3);
         setDirty();
     }
@@ -91,18 +94,31 @@ public class PlayerBuffData extends SavedData {
     }
 
     public void setAttunement(ServerPlayer player, boolean attunement) {
-        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false));
+        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false, false));
         buff.attunement = attunement;
+        setDirty();
+    }
+
+    public boolean hasImmersion(ServerPlayer player) {
+        PlayerBuff buff = playerBuffs.get(player.getUUID());
+        return buff != null && buff.immersion;
+    }
+
+    public void setImmersion(ServerPlayer player, boolean immersion) {
+        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false, false));
+        buff.immersion = immersion;
         setDirty();
     }
 
     private static class PlayerBuff {
         int lingeringLevel;
         boolean attunement;
+        boolean immersion;
 
-        PlayerBuff(int lingeringLevel, boolean attunement) {
+        PlayerBuff(int lingeringLevel, boolean attunement, boolean immersion) {
             this.lingeringLevel = lingeringLevel;
             this.attunement = attunement;
+            this.immersion = immersion;
         }
     }
 }

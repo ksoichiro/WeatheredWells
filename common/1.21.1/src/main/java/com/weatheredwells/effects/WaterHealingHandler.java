@@ -53,40 +53,48 @@ public class WaterHealingHandler {
 
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
             int lingeringLevel = data.getLingeringLevel(player);
-            if (lingeringLevel <= 0) {
+            boolean hasImmersion = data.hasImmersion(player);
+            if (lingeringLevel <= 0 && !hasImmersion) {
                 continue;
             }
 
             UUID uuid = player.getUUID();
 
             if (player.isInWater()) {
-                int ticks = waterContactTicks.getOrDefault(uuid, 0) + 1;
-                waterContactTicks.put(uuid, ticks);
+                // Immersion: maintain full air supply while in water
+                if (hasImmersion) {
+                    player.setAirSupply(player.getMaxAirSupply());
+                }
 
-                int activationDelay = data.hasAttunement(player)
-                        ? ATTUNEMENT_ACTIVATION_DELAY
-                        : DEFAULT_ACTIVATION_DELAY;
+                if (lingeringLevel > 0) {
+                    int ticks = waterContactTicks.getOrDefault(uuid, 0) + 1;
+                    waterContactTicks.put(uuid, ticks);
 
-                if (ticks >= activationDelay) {
-                    int healInterval = getHealInterval(lingeringLevel);
-                    int ticksSinceActivation = ticks - activationDelay;
-                    if (ticksSinceActivation % healInterval == 0) {
-                        float currentHealth = player.getHealth();
-                        float maxHealth = player.getMaxHealth();
-                        if (currentHealth < maxHealth) {
-                            player.heal(HEAL_AMOUNT);
-                            ServerLevel level = player.serverLevel();
-                            level.sendParticles(
-                                    ModParticles.WATER_HEALING.get(),
-                                    player.getX(),
-                                    player.getY() + 0.5,
-                                    player.getZ(),
-                                    2,
-                                    0.2,
-                                    0.3,
-                                    0.2,
-                                    0
-                            );
+                    int activationDelay = data.hasAttunement(player)
+                            ? ATTUNEMENT_ACTIVATION_DELAY
+                            : DEFAULT_ACTIVATION_DELAY;
+
+                    if (ticks >= activationDelay) {
+                        int healInterval = getHealInterval(lingeringLevel);
+                        int ticksSinceActivation = ticks - activationDelay;
+                        if (ticksSinceActivation % healInterval == 0) {
+                            float currentHealth = player.getHealth();
+                            float maxHealth = player.getMaxHealth();
+                            if (currentHealth < maxHealth) {
+                                player.heal(HEAL_AMOUNT);
+                                ServerLevel level = player.serverLevel();
+                                level.sendParticles(
+                                        ModParticles.WATER_HEALING.get(),
+                                        player.getX(),
+                                        player.getY() + 0.5,
+                                        player.getZ(),
+                                        2,
+                                        0.2,
+                                        0.3,
+                                        0.2,
+                                        0
+                                );
+                            }
                         }
                     }
                 }

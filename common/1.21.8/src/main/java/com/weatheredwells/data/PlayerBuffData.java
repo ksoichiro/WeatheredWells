@@ -40,7 +40,8 @@ public class PlayerBuffData extends SavedData {
     private static final Codec<PlayerBuff> PLAYER_BUFF_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.INT.fieldOf("lingering_level").forGetter(buff -> buff.lingeringLevel),
-                    Codec.BOOL.fieldOf("attunement").forGetter(buff -> buff.attunement)
+                    Codec.BOOL.fieldOf("attunement").forGetter(buff -> buff.attunement),
+                    Codec.BOOL.optionalFieldOf("immersion", false).forGetter(buff -> buff.immersion)
             ).apply(instance, PlayerBuff::new)
     );
 
@@ -58,7 +59,7 @@ public class PlayerBuffData extends SavedData {
                 PlayerBuffData data = new PlayerBuffData();
                 playersMap.forEach((key, buff) ->
                         data.playerBuffs.put(UUID.fromString(key),
-                                new PlayerBuff(buff.lingeringLevel, buff.attunement)));
+                                new PlayerBuff(buff.lingeringLevel, buff.attunement, buff.immersion)));
                 return data;
             })
     );
@@ -80,7 +81,7 @@ public class PlayerBuffData extends SavedData {
     }
 
     public void setLingeringLevel(ServerPlayer player, int level) {
-        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false));
+        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false, false));
         buff.lingeringLevel = Math.min(level, 3);
         setDirty();
     }
@@ -91,18 +92,31 @@ public class PlayerBuffData extends SavedData {
     }
 
     public void setAttunement(ServerPlayer player, boolean attunement) {
-        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false));
+        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false, false));
         buff.attunement = attunement;
+        setDirty();
+    }
+
+    public boolean hasImmersion(ServerPlayer player) {
+        PlayerBuff buff = playerBuffs.get(player.getUUID());
+        return buff != null && buff.immersion;
+    }
+
+    public void setImmersion(ServerPlayer player, boolean immersion) {
+        PlayerBuff buff = playerBuffs.computeIfAbsent(player.getUUID(), k -> new PlayerBuff(0, false, false));
+        buff.immersion = immersion;
         setDirty();
     }
 
     private static class PlayerBuff {
         int lingeringLevel;
         boolean attunement;
+        boolean immersion;
 
-        PlayerBuff(int lingeringLevel, boolean attunement) {
+        PlayerBuff(int lingeringLevel, boolean attunement, boolean immersion) {
             this.lingeringLevel = lingeringLevel;
             this.attunement = attunement;
+            this.immersion = immersion;
         }
     }
 }

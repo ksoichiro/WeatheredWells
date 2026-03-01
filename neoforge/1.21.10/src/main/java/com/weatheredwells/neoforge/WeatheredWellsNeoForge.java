@@ -54,6 +54,7 @@ public class WeatheredWellsNeoForge {
 
     private static final DeferredHolder<MobEffect, MobEffect> WATERWAYS_LINGERING = EFFECTS.register("waterways_lingering", ModEffects::createWaterwaysLingering);
     private static final DeferredHolder<MobEffect, MobEffect> WATERWAYS_ATTUNEMENT = EFFECTS.register("waterways_attunement", ModEffects::createWaterwaysAttunement);
+    private static final DeferredHolder<MobEffect, MobEffect> WATERWAYS_IMMERSION = EFFECTS.register("waterways_immersion", ModEffects::createWaterwaysImmersion);
 
     private static final DeferredHolder<ParticleType<?>, ParticleType<?>> WATER_HEALING = PARTICLES.register("water_healing", ModParticles::createWaterHealing);
 
@@ -91,6 +92,7 @@ public class WeatheredWellsNeoForge {
         ModItems.DEEP_TOTEM = DEEP_TOTEM;
         ModEffects.WATERWAYS_LINGERING = WATERWAYS_LINGERING;
         ModEffects.WATERWAYS_ATTUNEMENT = WATERWAYS_ATTUNEMENT;
+        ModEffects.WATERWAYS_IMMERSION = WATERWAYS_IMMERSION;
         ModParticles.WATER_HEALING = () -> (SimpleParticleType) WATER_HEALING.get();
         ModProcessors.CHEST_LOOT = CHEST_LOOT;
         ModProcessors.WATERLOG_REMOVAL = WATERLOG_REMOVAL;

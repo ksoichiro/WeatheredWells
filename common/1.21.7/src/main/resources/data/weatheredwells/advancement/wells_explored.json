@@ -1,0 +1,77 @@
+{
+  "parent": "weatheredwells:root",
+  "criteria": {
+    "found_mossy_well": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "weatheredwells:mossy_well"
+          }
+        }
+      }
+    },
+    "found_clear_well": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "weatheredwells:clear_well"
+          }
+        }
+      }
+    },
+    "found_dry_well": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "weatheredwells:dry_well"
+          }
+        }
+      }
+    },
+    "found_forgotten_well": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "weatheredwells:forgotten_well"
+          }
+        }
+      }
+    },
+    "found_sunken_well": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "weatheredwells:sunken_well"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_mossy_well"],
+    ["found_clear_well"],
+    ["found_dry_well"],
+    ["found_forgotten_well"],
+    ["found_sunken_well"]
+  ],
+  "display": {
+    "icon": {
+      "id": "minecraft:heart_of_the_sea"
+    },
+    "title": {
+      "translate": "advancements.weatheredwells.wells_explored.title"
+    },
+    "description": {
+      "translate": "advancements.weatheredwells.wells_explored.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

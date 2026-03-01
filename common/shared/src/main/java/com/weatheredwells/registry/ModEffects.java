@@ -18,6 +18,7 @@
 package com.weatheredwells.registry;
 
 import com.weatheredwells.effects.WaterwaysAttunementEffect;
+import com.weatheredwells.effects.WaterwaysImmersionEffect;
 import com.weatheredwells.effects.WaterwaysLingeringEffect;
 import net.minecraft.world.effect.MobEffect;
 
@@ -26,6 +27,7 @@ import java.util.function.Supplier;
 public class ModEffects {
     public static Supplier<MobEffect> WATERWAYS_LINGERING;
     public static Supplier<MobEffect> WATERWAYS_ATTUNEMENT;
+    public static Supplier<MobEffect> WATERWAYS_IMMERSION;
 
     public static MobEffect createWaterwaysLingering() {
         return new WaterwaysLingeringEffect();
@@ -33,5 +35,9 @@ public class ModEffects {
 
     public static MobEffect createWaterwaysAttunement() {
         return new WaterwaysAttunementEffect();
+    }
+
+    public static MobEffect createWaterwaysImmersion() {
+        return new WaterwaysImmersionEffect();
     }
 }

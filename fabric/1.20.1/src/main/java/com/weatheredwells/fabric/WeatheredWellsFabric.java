@@ -47,6 +47,7 @@ public class WeatheredWellsFabric implements ModInitializer {
         // Register effects
         ModEffects.WATERWAYS_LINGERING = register(BuiltInRegistries.MOB_EFFECT, "waterways_lingering", ModEffects.createWaterwaysLingering());
         ModEffects.WATERWAYS_ATTUNEMENT = register(BuiltInRegistries.MOB_EFFECT, "waterways_attunement", ModEffects.createWaterwaysAttunement());
+        ModEffects.WATERWAYS_IMMERSION = register(BuiltInRegistries.MOB_EFFECT, "waterways_immersion", ModEffects.createWaterwaysImmersion());
 
         // Register particles
         ModParticles.WATER_HEALING = register(BuiltInRegistries.PARTICLE_TYPE, "water_healing", ModParticles.createWaterHealing());
