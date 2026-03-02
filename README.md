@@ -22,6 +22,7 @@ Wells generate naturally throughout the world. Each well has an above-ground sec
 - **Clarity Settles** - Obtain a Clear Totem
 - **Depths Endured** - Obtain a Deep Totem
 - **At Home in Water** - Collect all three totems
+- **Wells Explored** - Visit all five well structures
 
 ### Buff System
 Collecting totems grants permanent buffs that persist through death:
@@ -34,13 +35,18 @@ Collecting totems grants permanent buffs that persist through death:
 - Granted upon collecting all three totems
 - Reduces activation delay from 5 seconds to 2 seconds
 
+**Blessing of the Waterways: Immersion**
+- Granted upon discovering all five well types
+- Water breathing, faster underwater movement and mining
+
 ## Requirements
 
 ### For Players
-- **Minecraft**: Java Edition 1.21.1
+- **Minecraft**: Java Edition 1.20.1, 1.21.1, 1.21.3–1.21.11
 - **Mod Loader**:
-  - **Fabric**: Fabric Loader 0.17.3+ with Fabric API
-  - **NeoForge**: NeoForge 21.1.209+
+  - **Fabric**: Fabric Loader with Fabric API
+  - **NeoForge**: NeoForge (1.21.1+)
+  - **Forge**: Forge (1.20.1 only)
 ### For Developers
 - **Java Development Kit (JDK)**: 21 or higher
 - **IDE**: IntelliJ IDEA (recommended) or Eclipse
@@ -58,17 +64,13 @@ cd WeatheredWells
 ### Build Commands
 
 ```bash
-# Build for default version (1.21.1) - both platforms
+# Build for default version (1.21.11) - both platforms
 ./gradlew build
 
-# Build specific platform
-./gradlew fabric-1.21.1:build
-./gradlew neoforge-1.21.1:build
+# Build for a specific version
+./gradlew build -Ptarget_mc_version=1.21.1
+./gradlew build -Ptarget_mc_version=1.20.1
 ```
-
-**Output Files**:
-- `fabric-1.21.1/build/libs/weatheredwells-0.1.0+1.21.1-fabric.jar`
-- `neoforge-1.21.1/build/libs/weatheredwells-0.1.0+1.21.1-neoforge.jar`
 
 ## Development Setup
 
@@ -83,11 +85,14 @@ cd WeatheredWells
 ### Run in Development Environment
 
 ```bash
-# Fabric Development Client
-./gradlew fabric-1.21.1:runClient
+# Fabric Development Client (default version)
+./gradlew fabric:runClient
 
-# NeoForge Development Client
-./gradlew neoforge-1.21.1:runClient
+# NeoForge Development Client (default version)
+./gradlew neoforge:runClient
+
+# Specific version
+./gradlew fabric:runClient -Ptarget_mc_version=1.21.1
 ```
 
 ### Verify Setup
@@ -99,41 +104,39 @@ Launch the development client and verify:
 
 ## Installing Pre-built JAR
 
-### For Fabric (Minecraft 1.21.1)
-1. Install Minecraft 1.21.1
-2. Install Fabric Loader 0.17.3+
-3. Download and install Fabric API
-4. Copy `weatheredwells-0.1.0+1.21.1-fabric.jar` to `.minecraft/mods/` folder
-6. Launch Minecraft with Fabric profile
-
-### For NeoForge (Minecraft 1.21.1)
-1. Install Minecraft 1.21.1
-2. Install NeoForge 21.1.209+
-3. Copy `weatheredwells-0.1.0+1.21.1-neoforge.jar` to `.minecraft/mods/` folder
-5. Launch Minecraft with NeoForge profile
+1. Install the desired Minecraft version
+2. Install the corresponding mod loader (Fabric + Fabric API, NeoForge, or Forge)
+3. Copy the appropriate `.jar` file to the `.minecraft/mods/` folder
+4. Launch Minecraft with the mod loader profile
 
 ## Project Structure
 
 ```
 WeatheredWells/
-├── common-shared/              # Shared version-agnostic sources
-│   └── src/main/java/com/weatheredwells/
-│       ├── WeatheredWells.java # Common entry point
-│       └── registry/           # Registry classes
-├── common-1.21.1/              # Version-specific common code
-│   ├── src/main/java/com/weatheredwells/
-│   │   ├── effects/            # Custom mob effects
-│   │   ├── events/             # Event handlers
-│   │   ├── data/               # Player data
-│   │   ├── mixin/              # Mixin implementations
-│   │   └── worldgen/           # World generation processors
-│   └── src/main/resources/
-│       ├── data/weatheredwells/  # Data packs
-│       └── assets/weatheredwells/ # Assets
-├── fabric-base/                # Shared Fabric sources
-├── fabric-1.21.1/              # Fabric subproject
-├── neoforge-base/              # Shared NeoForge sources
-├── neoforge-1.21.1/            # NeoForge subproject
+├── common/
+│   ├── shared/                 # Shared version-agnostic sources
+│   │   └── src/main/java/com/weatheredwells/
+│   │       ├── WeatheredWells.java # Common entry point
+│   │       └── registry/           # Registry classes
+│   └── {version}/              # Version-specific common code
+│       ├── src/main/java/com/weatheredwells/
+│       │   ├── effects/            # Custom mob effects
+│       │   ├── events/             # Event handlers
+│       │   ├── data/               # Player data
+│       │   ├── mixin/              # Mixin implementations
+│       │   └── worldgen/           # World generation processors
+│       └── src/main/resources/
+│           ├── data/weatheredwells/  # Data packs
+│           └── assets/weatheredwells/ # Assets
+├── fabric/
+│   ├── base/                   # Shared Fabric sources
+│   └── {version}/              # Fabric version subprojects
+├── neoforge/
+│   ├── base/                   # Shared NeoForge sources
+│   └── {version}/              # NeoForge version subprojects (1.21.1+)
+├── forge/
+│   ├── base/                   # Shared Forge sources
+│   └── {version}/              # Forge version subprojects (1.20.1)
 ├── props/                      # Version-specific properties
 ├── docs/                       # Documentation
 ├── build.gradle                # Root build configuration
@@ -170,4 +173,4 @@ For issues, feature requests, or questions:
 
 ---
 
-**Developed for Minecraft Java Edition 1.21.1**
+**Developed for Minecraft Java Edition 1.20.1, 1.21.1, 1.21.3–1.21.11**

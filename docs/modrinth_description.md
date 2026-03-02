@@ -32,6 +32,7 @@ Each well chest contains one random totem:
 - **Clarity Settles** — Obtain a Clear Totem
 - **Depths Endured** — Obtain a Deep Totem
 - **At Home in Water** — Collect all three totems
+- **Wells Explored** — Visit all five well structures
 
 ### 💧 Permanent Water-Healing Buffs
 Each advancement grants **"Blessing of the Waterways"** buffs:
@@ -46,6 +47,10 @@ Each advancement grants **"Blessing of the Waterways"** buffs:
 - Granted upon collecting all three totems
 - Reduces activation delay from 5 seconds to 2 seconds
 - Stacks with Lingering for faster, more responsive healing
+
+**Immersion**:
+- Granted upon discovering all five well types
+- Water breathing, faster underwater movement and mining
 
 All buffs are **permanent** and **persist through death**.
 
@@ -67,22 +72,15 @@ All buffs are **permanent** and **persist through death**.
 
 ### Multi-Loader Support
 This mod supports **multiple mod loaders and versions**!
-- **Fabric** and **NeoForge** for Minecraft 1.21.1
+- **Fabric** and **NeoForge** for Minecraft 1.21.1, 1.21.3–1.21.11
 - **Fabric** and **Forge** for Minecraft 1.20.1
 - Download the correct version for your mod loader
 - Shared codebase ensures consistent experience across loaders
 
 ### Requirements
-
-#### Minecraft 1.21.1
-- **Mod Loader**:
-  - Fabric Loader 0.17.3+ with Fabric API 0.116.7+1.21.1, OR
-  - NeoForge 21.1.209+
-
-#### Minecraft 1.20.1
-- **Mod Loader**:
-  - Fabric Loader 0.16.10+ with Fabric API 0.92.2+1.20.1, OR
-  - Forge 47.3.0+
+- **Fabric**: Fabric Loader with Fabric API
+- **NeoForge**: NeoForge (1.21.1+)
+- **Forge**: Forge (1.20.1 only)
 
 ### Compatibility
 - Works alongside other world generation mods
@@ -133,6 +131,6 @@ Check out the **Gallery** above for screenshots showcasing:
 
 ---
 
-**Developed for Minecraft Java Edition 1.21.1 / 1.20.1**
+**Developed for Minecraft Java Edition 1.20.1, 1.21.1, 1.21.3–1.21.11**
 
 Discover the wells. Embrace the water. 💧
